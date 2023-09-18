@@ -1,9 +1,9 @@
 <?php
 // reads the CSV file and returns an array of arrays.
 // references changes made in 09-csv-read-altered.php on pepper's laptop.
-function readCSVFile($file,$outerArray){
-    // check if file exists && is readable.
-    if($file_exists($file) || !is_readable($file)) return false;
+function readCSVFile($file){
+    // check if file exists and is readable. Stolen from bit of code Jacob shared
+    if(!file_exists($file) || !is_readable($file)) return false;
     // create array to return
     $outerArray=array();
     // open file with fOpen & get path

@@ -6,7 +6,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Qexal - Responsive Bootstrap 5 Landing Page Template</title>
+        <title>Orion Aerospace Dynamics - Responsive Bootstrap 5 Landing Page Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
         <meta name="keywords" content="bootstrap 5, premium, marketing, multipurpose" />
@@ -414,38 +414,38 @@
                     <!-- end col -->
 					<?php 
 						$file='./data/teams.csv';
-						//$teamMembers=readCSVFile($file);
-						$teamMembers = array(
-						  array("Volvo",22,18),
-						  array("BMW",15,13),
-						  array("Saab",5,2)
-						 );
-						if(!$teamMembers
+						$teamMembers=readCSVFile($file);
 						foreach ($teamMembers as $i=>$member):
-								echo '<div class="col-lg-3 col-sm-6">
-									<div class="team-box mt-4 position-relative overflow-hidden rounded text-center shadow">
-										<div class="position-relative overflow-hidden">
-											<img src="images/team/2.jpg" alt="clone #'.$i.'" class="img-fluid d-block mx-auto" />
-											<p>'.$member[2].'</p>
-											<ul class="list-inline p-3 mb-0 team-social-item">
-												<li class="list-inline-item mx-3">
-													<a href="javascript: void(0);" class="team-social-icon h-primary"><i class="icon-sm" data-feather="facebook"></i></a>
-												</li>
-												<li class="list-inline-item mx-3">
-													<a href="javascript: void(0);" class="team-social-icon h-info"><i class="icon-sm" data-feather="twitter"></i></a>
-												</li>
-												<li class="list-inline-item mx-3">
-													<a href="javascript: void(0);" class="team-social-icon h-danger"><i class="icon-sm" data-feather="instagram"></i></a>
-												</li>
-											</ul>
-										</div>
-										<div class="p-4">
-											<h5 class="font-size-19 mb-1">'.$member[0].'</h5>
-											<p class="text-muted text-uppercase font-size-14 mb-0">'.$member[1].'</p>
-										</div>
-									</div>
-								</div>';
-							endforeach; 
+							if($member[0]=='Name')
+							{
+								// skip
+							}
+							else{
+									echo '<div class="col-lg-3 col-sm-6">
+							<div class="team-box mt-4 position-relative overflow-hidden rounded text-center shadow">
+								<div class="position-relative overflow-hidden">
+									<img src="'.$member[3].'" alt="" class="img-fluid d-block mx-auto" />
+									<ul class="list-inline p-3 mb-0 team-social-item">
+										<li class="list-inline-item mx-3">
+											<a href="javascript: void(0);" class="team-social-icon h-primary"><i class="icon-sm" data-feather="facebook"></i></a>
+										</li>
+										<li class="list-inline-item mx-3">
+											<a href="javascript: void(0);" class="team-social-icon h-info"><i class="icon-sm" data-feather="twitter"></i></a>
+										</li>
+										<li class="list-inline-item mx-3">
+											<a href="javascript: void(0);" class="team-social-icon h-danger"><i class="icon-sm" data-feather="instagram"></i></a>
+										</li>
+									</ul>
+								</div>
+								<div class="p-4">
+									<h5 class="font-size-19 mb-1">'.$member[0].'</h5>
+									<p class="text-muted text-uppercase font-size-14 mb-0">'.$member[1].'</p>
+									<p class="text-muted font-size-12 mb-0">'.$member[2].'</p>
+								</div>
+							</div>
+						</div>';
+							}
+						endforeach; 
 						?>
                     <!-- end col -->
                 </div>
@@ -708,7 +708,7 @@
                             <p class="text-white-50 f-15 mb-0">
                                 <script>
                                 document.write(new Date().getFullYear())
-                            </script> © Qexal. Design By Themesbrand</p>
+                            </script> © Orion Aerospace Dynamics. Design By Themesbrand</p>
                         </div>
                     </div>
                     <!-- end col -->
