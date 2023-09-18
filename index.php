@@ -1,8 +1,7 @@
 <?php
 
 require './lib/readCSV.php';
-require 'readJSON.php';
-
+require './lib/readJSON.php';
 
 ?>
 <!DOCTYPE html>
@@ -337,7 +336,7 @@ require 'readJSON.php';
             </div>
             <!-- end container -->
         </section>
-        <!-- Blog end -->
+        <!-- Award end -->
 
 <!--        &lt;!&ndash; CTA start &ndash;&gt;-->
 <!--        <section class="section bg-center w-100 bg-light" style="background-image: url(images/cta-bg.png);">-->
