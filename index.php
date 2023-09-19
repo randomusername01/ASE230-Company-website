@@ -2,13 +2,14 @@
 
 require './lib/readCSV.php';
 require 'lib\readJSON.php';
+require_once 'lib\readPlainText.php';
 $file = 'data\KeyProducts_Services.JSON';
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Orion Aerospace Dynamics - Responsive Bootstrap 5 Landing Page Template</title>
+        <title>Orion Aerospace Dynamics</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
         <meta name="keywords" content="bootstrap 5, premium, marketing, multipurpose" />
@@ -48,49 +49,45 @@ $file = 'data\KeyProducts_Services.JSON';
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ms-auto navbar-center" id="navbar-navlist">
                         <li class="nav-item">
-                            <a href="#home" class="nav-link active">Home</a>
+                            <a href="#home" class="nav-link active"><?= 'Home' ?></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#services" class="nav-link">Services</a>
+                            <a href="#services" class="nav-link"><?= 'About Us' ?></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#features" class="nav-link">Features</a>
+                            <a href="#features" class="nav-link"><?= 'Our Team' ?></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#pricing" class="nav-link">Pricing</a>
+                            <a href="#features" class="nav-link"><?= 'Missions' ?></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#team" class="nav-link">Team</a>
+                            <a href="#features" class="nav-link"><?= 'Awards' ?></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#blog" class="nav-link">Blog</a>
+                            <a href="#pricing" class="nav-link"><?= 'Aerial Vehicles' ?></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#contact" class="nav-link">Contact Us</a>
+                            <a href="#team" class="nav-link"><?= 'Space Habitats' ?></a>
                         </li>
                     </ul>
-                    <a href="" class="btn btn-sm rounded-pill nav-btn ms-lg-3">Buy Now</a>
+                    <a href="" class="btn btn-sm rounded-pill nav-btn ms-lg-3"><?= 'Contact Us' ?></a>
                 </div>
             </div>
             <!-- end container -->
         </nav>
         <!-- Navbar End -->
 
-        <!-- Hero Start -->
+        <!-- Title Start -->
+        <?php
+            $overview = readTxtFile('data\overview.txt');
+        ?>
         <section class="hero-3 bg-center position-relative" style="background-image: url(images/hero-3-bg.png);" id="home">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="text-center">
-                            <span class="badge badge-soft-primary mb-4">Professional Landing</span>
-                            <h1 class="font-weight-semibold mb-4 hero-3-title">Professional, Multipurpose Landing Page</h1>
-                            <p class="mb-5 text-muted subtitle w-75 mx-auto">Nemo enim ipsam voluptatem quia voluptas sit aut aspernatur aut fugit sed consequuntur magni dolores nesciunt.</p>
-                            
-                            <div>
-                                <button type="button" class="btn btn-primary rounded-pill me-2">Sign up for free</button>
-                                <button type="button" class="btn btn-light rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#watchvideomodal">Play video <i class="ms-1 icon-sm align-middle" data-feather="play-circle"></i></button>
-                            </div>
-
+                            <h1 class="font-weight-semibold mb-4 hero-3-title"><?= 'Orion Aerospace Dynamics' ?></h1>
+                            <p class="mb-5 text-muted subtitle w-75 mx-auto"><?= $overview ?></p>
                             <!-- Modal -->
                             <div class="modal fade bd-example-modal-lg" id="watchvideomodal" data-keyboard="false" tabindex="-1"
                                 aria-hidden="true">
@@ -109,7 +106,29 @@ $file = 'data\KeyProducts_Services.JSON';
                 </div><!-- end row -->
             </div>
         </section>
-        <!-- Hero End -->
+        <!-- Title End -->
+
+        <!-- Mission statement start -->
+        <?php
+            $missionStatement = readTxtFile('data\missionStatement.txt');
+        ?>
+        <section class="section bg-gradient-primary">
+            <div class="bg-overlay-img" style="background-image: url(images/demos.png);"></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="text-center">
+                            <h1 class="text-white mb-4"><?= 'Our Mission Statement'?></h1>
+                            <p class="text-white mb-5 font-size-16"><?= $missionStatement ?></p>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- Mission statement end -->
 
         <?php
         // Assuming the JSON is loaded into $json variable from a file or string.
@@ -153,25 +172,6 @@ $file = 'data\KeyProducts_Services.JSON';
             <!-- end container -->
         </section>
         <!-- Products end -->
-
-        <section class="section bg-gradient-primary">
-            <div class="bg-overlay-img" style="background-image: url(images/demos.png);"></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="text-center">
-                            <h1 class="text-white mb-4">Build your dream website today</h1>
-                            <p class="text-white mb-5 font-size-16">Sed perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totamrem aperiam eaque inventore veritatis quasi.</p>
-                            <a href="#" class="btn btn-lg btn-light">Ask for Demonstration</a>
-                        </div>
-                    </div>
-                    <!-- end col -->
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end container -->
-        </section>
-        <!-- Cta end -->
 
         <!-- Team start -->
         <section class="section bg-light" id="team">
