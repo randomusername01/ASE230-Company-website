@@ -8,9 +8,13 @@ if(count($_POST)>0){
 	// Write the new award as string.
 	$newAward = $_POST['year'].',"'.$_POST['achievement'].'"'.PHP_EOL;
 	// send New Award to be added to data file.
-	addToCSVFile(APP_PATH.'/data/awards.csv',$newAward);
-
-	header('location: index.php');
+	if(addToCSVFile(APP_PATH.'/data/awards.csv',$newAward)== false){
+		// throw error.
+	}else{
+		// new file creation successful, go back to index.
+		header('location: index.php');
+	}
+// file creation not successful, stay on page + throw error.
 }else{
 
 ?>

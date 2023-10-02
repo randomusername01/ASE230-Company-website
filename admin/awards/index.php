@@ -21,7 +21,10 @@ $index=0;
 foreach($content as $award){
     ?>
         <div>
-            <h3><?= $award['0'].' '.$award['1'] ?></h3><a href="detail.php?index=<?= $index ?>">View in detail</a>
+            <h3><?= $award['0'].' '.$award['1'] ?></h3><br />
+            <a href="detail.php?index=<?= $index ?>">View Detail</a> | 
+            <a href="edit.php?index=<?= $index ?>">Edit</a> | 
+            <a href="delete.php?index=<?= $index ?>">Delete</a>
         </div>
         <hr />
     <?php

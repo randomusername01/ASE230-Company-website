@@ -11,8 +11,17 @@
         // open file with fOpen & get path
         $fp=fopen($file,'r');
         // writes the contents into an array.
-        while($content=fgetcsv($fp)){
+        while(!feof($fp)){
+            // trim white spaces at start of the line.
+            $line=trim(fgets($fp));
+            // check the line has characters in it.
+            if(strlen($line)>0){
+                // turn line into an array.
+                $content=explode(',',$line);
             array_push($outerArray,$content);
+            }else{
+                continue;
+            }
         }
         return $outerArray;
         // close the file.
@@ -26,8 +35,31 @@
 	    fclose($fp);
     }
 
-    function updateCSVFile($file){
-
+    function updateCSVFile($file,$index,$updatedLine){
+        $output='';
+        // open the file in read mode.
+        $fp=fopen(APP_PATH.'/data/awards.csv','r');
+        $index=0;
+        // getting line by line.
+        while(!feof($fp)){
+            // getting a single line out of the original document.
+            $line=fgets($fp);
+            if($index==$_GET['index']){
+                // modify line and add it to $output.
+                $output.=$updatedLine;
+            }else{
+                // building the replacement file line by line.
+                $output.=$line;
+            }
+            $index++;
+        }
+        // close the file we were reading.
+        fclose($fp);
+        // open the file in write mode.
+        $fp=fopen(APP_PATH.'/data/awards.csv','w');
+        // write the edited content into it.
+        fputs($fp,$output);
+        fclose($fp);
     }
 
     function deleteFromCSVFile($file){
