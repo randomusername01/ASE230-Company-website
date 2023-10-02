@@ -29,22 +29,26 @@
     }
 
     function addToCSVFile($file,$newContent){
-        $fp=fopen(APP_PATH.'/data/awards.csv','a+');
+        // check if file exists and is readable. Stolen from bit of code Jacob shared
+        if(!file_exists($file) || !is_readable($file)) return false;
+        $fp=fopen($file,'a+');
 	    fwrite($fp,$newContent);
 	    // close the file
 	    fclose($fp);
     }
 
-    function updateCSVFile($file,$index,$updatedLine){
+    function updateCSVFile($file,$targetIndex,$updatedLine){
+        // check if file exists and is readable. Stolen from bit of code Jacob shared
+        if(!file_exists($file) || !is_readable($file)) return false;
         $output='';
         // open the file in read mode.
-        $fp=fopen(APP_PATH.'/data/awards.csv','r');
+        $fp=fopen($file,'r');
         $index=0;
         // getting line by line.
         while(!feof($fp)){
             // getting a single line out of the original document.
             $line=fgets($fp);
-            if($index==$_GET['index']){
+            if($index==$targetIndex){
                 // modify line and add it to $output.
                 $output.=$updatedLine;
             }else{
@@ -56,12 +60,34 @@
         // close the file we were reading.
         fclose($fp);
         // open the file in write mode.
-        $fp=fopen(APP_PATH.'/data/awards.csv','w');
+        $fp=fopen($file,'w');
         // write the edited content into it.
         fputs($fp,$output);
         fclose($fp);
     }
 
-    function deleteFromCSVFile($file){
-
+    function deleteCSVFile($file,$targetIndex,$updatedLine){
+        // check if file exists and is readable. Stolen from bit of code Jacob shared
+        if(!file_exists($file) || !is_readable($file)) return false;
+        $output='';
+        // open the file in read mode.
+        $fp=fopen($file,'r');
+        $index=0;
+        // getting line by line.
+        while(!feof($fp)){
+            // getting a single line out of the original document.
+            $line=fgets($fp);
+            if($index!=$targetIndex){
+                // add to the new file if it is not the targetted line.
+                $output.=$line;
+            }
+            $index++;
+        }
+        // close the file we were reading.
+        fclose($fp);
+        // open the file in write mode.
+        $fp=fopen($file,'w');
+        // write the edited content into it.
+        fputs($fp,$output);
+        fclose($fp);
     }

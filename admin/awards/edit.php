@@ -1,5 +1,6 @@
 <?php
-// Edit a line item in the file.
+// EDIT.php: Edit a line item in the file.
+
 require_once('../../settings.php');
 require_once('awards.php');
 
@@ -22,7 +23,7 @@ if(count($_POST)>0){
     
     $content=readCSVFile(APP_PATH.'/data/awards.csv');
     $award=$content[$_GET['index']];
-    
+
     ?>
     <a href="index.php"><b>Awards Index</b></a>
             <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>?index=<?= $_GET['index'] ?>" method="POST">
