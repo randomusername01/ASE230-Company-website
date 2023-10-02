@@ -19,14 +19,17 @@
         fclose($fp);
     }
 
+    function addToCSVFile($file,$newContent){
+        $fp=fopen(APP_PATH.'/data/awards.csv','a+');
+	    fwrite($fp,$newContent);
+	    // close the file
+	    fclose($fp);
+    }
+
     function updateCSVFile($file){
 
     }
 
     function deleteFromCSVFile($file){
 
-    }
-
-    function addToCSVFile($file){
-        
     }

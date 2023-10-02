@@ -6,7 +6,6 @@ $content=readCSVFile(APP_PATH.'/data/awards.csv');
 $item=$content[$_GET['index']];
 
 
-print_r($item);
 ?>
 
 <a href="index.php">Go to Awards index</a>
