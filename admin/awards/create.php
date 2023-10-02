@@ -1,5 +1,6 @@
 <?php
 // Adds a single new entry to the initial page.
+require_once('../../settings.php');
 
 if(count($_POST)>0){	
 	print_r($_POST);
@@ -10,6 +11,12 @@ if(count($_POST)>0){
 	fwrite($fp,$_POST['year'].',"'.$_POST['achievement'].'"'.PHP_EOL);
 	// close the file
 	fclose($fp);
+}
+
+if(count($_POST)>0){
+    $fp=fopen(APP_PATH.'/data/data.csv','a');
+    fwrite($fp,$_POST['year'].',"'.$_POST['achievement'].'"'.PHP_EOL);
+    fclose($fp);
 }
 ?>
 

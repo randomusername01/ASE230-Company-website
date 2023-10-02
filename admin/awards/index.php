@@ -1,7 +1,7 @@
 <?php
 // show list of available items
 
-require '../../lib/readCSV.php';
+require 'awards.php';
 require_once('../../settings.php');
 
 // used for troubleshooting.
