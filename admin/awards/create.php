@@ -1,5 +1,5 @@
 <?php
-// Adds a single new entry to the csv file.
+// CREATE.php: Adds a single new entry to the csv file.
 
 require_once('../../settings.php');
 require_once('awards.php');
@@ -9,14 +9,13 @@ if(count($_POST)>0){
 	$newAward = $_POST['year'].',"'.$_POST['achievement'].'"'.PHP_EOL;
 	// send New Award to be added to data file.
 	if(addToCSVFile(APP_PATH.'/data/awards.csv',$newAward)== false){
-		// throw error.
+		// TODO: throw error if create fail. Ideally with info on why fail.
 	}else{
 		// new file creation successful, go back to index.
 		header('location: index.php');
 	}
-// file creation not successful, stay on page + throw error.
 }else{
-
+    // If there is nothing to post when button is hit, stay on page.
 ?>
 
 <a href="index.php">Go to Awards index</a>

@@ -27,7 +27,7 @@
         // close the file.
         fclose($fp);
     }
-
+    // adds a line to the end of the csv file.
     function addToCSVFile($file,$newContent){
         // check if file exists and is readable. Stolen from bit of code Jacob shared
         if(!file_exists($file) || !is_readable($file)) return false;
@@ -36,7 +36,7 @@
 	    // close the file
 	    fclose($fp);
     }
-
+    // updates an existing line in the csv file.
     function updateCSVFile($file,$targetIndex,$updatedLine){
         // check if file exists and is readable. Stolen from bit of code Jacob shared
         if(!file_exists($file) || !is_readable($file)) return false;
@@ -65,8 +65,8 @@
         fputs($fp,$output);
         fclose($fp);
     }
-
-    function deleteCSVFile($file,$targetIndex,$updatedLine){
+    // removes an existing line from the csv file.
+    function deleteFromCSV($file,$targetIndex,$updatedLine){
         // check if file exists and is readable. Stolen from bit of code Jacob shared
         if(!file_exists($file) || !is_readable($file)) return false;
         $output='';

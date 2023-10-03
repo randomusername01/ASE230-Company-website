@@ -1,5 +1,5 @@
 <?php
-// show list of available items
+//INDEX.php show list of available items
 
 require 'awards.php';
 require_once('../../settings.php');
