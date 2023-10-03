@@ -235,7 +235,7 @@ $file = 'data\KeyProducts_Services.JSON';
                 <div class="row justify-content-center mb-4">
                     <div class="col-lg-7 text-center">
                         <h2 class="fw-bold">Our Achievements</h2>
-                        <p class="text-muted">While we have many successes to be propud of, here are some of our top picks.</p>
+                        <p class="text-muted">While we have many successes to be proud of, here are some of our top picks.</p>
                     </div>
                 </div>
                 <div class="row">
