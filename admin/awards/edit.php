@@ -37,7 +37,7 @@ if(count($_POST)>0){
     // If there is nothing to post when button is hit, stay on page.
     ?>
     <a href="index.php"><b>Awards Index</b></a>
-            <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>?index=<?= $_GET['index'] ?>" method="POST">
+            <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) .'?index='.$_GET['index'] ?>" method="POST">
                 <input type="text" name="year" placeholder="Year" value="<?= $award[0]?>" /><br />
                 <textarea name="achievement" placeholder="Achievement"><?= $award[1] ?></textarea><br />
                 <button type="submit" a href="index.php">Edit</button>

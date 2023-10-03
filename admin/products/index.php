@@ -3,14 +3,17 @@
 require 'products.php';
 require_once('../../settings.php');
 
-$products=readJSONFile(APP_PATH.'/data/KeyProducts_Services.JSON');
+$products=readJSONFile(APP_PATH.'/data/data.JSON');
 
 $index=0;
+echo '<a href="create.php">Create a New Product</a>';
 foreach($products as $productname => $details){
     ?>
         <div>
-            <h1><?= $productname ?></h1>
-            <a href="detail.php?index=<?= $productname ?>">View Details</a>
+            <h1><?= $details['Name'] ?></h1>
+            <a href="detail.php?index=<?= $index ?>">View Details</a> | 
+            <a href="edit.php?index=<?= $index ?>">Edit</a> | 
+            <a href="delete.php?index=<?= $index ?>">Delete</a>
         </div>
         <hr />
     <?php
