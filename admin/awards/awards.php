@@ -12,8 +12,13 @@
         $fp=fopen($file,'r');
         // writes the contents into an array.
         while(!feof($fp)){
+
             // trim white spaces at start of the line.
             $line=trim(fgets($fp));
+            echo $line.'y'.'<br />';
+            $line=preg_replace('/(^"|"$)/','',$line);
+            echo $line.'x';
+
             // check the line has characters in it.
             if(strlen($line)>0){
                 // turn line into an array.
