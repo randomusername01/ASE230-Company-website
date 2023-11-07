@@ -1,34 +1,32 @@
 <?php
-// CREATE.php: add a product to the already existing json file.
+require '../../lib/JsonCRUD.php';
+require 'Product.php';
 
-require 'products.php';
-require_once('../../settings.php');
+$jsonCrud = new JsonCRUD(APP_PATH.'/data/data.json');
 
-if(count($_POST)>0){
-    // create applications array
-    if($_POST['applicationName']!='')
-    {
-        // if the second field for application names is not empty.
-        if($_POST['applicationName1']!='')
-        {
-            $applications=array($_POST['applicationName']=>$_POST['applicationDescription'],$_POST['applicationName1']=>$_POST['applicationDescription1']);
-        }
-        else{
-            // only load the first two bits in.
-            $applications=array($_POST['applicationName']=>$_POST['applicationDescription']);
-        }
-    }else{
-        // create empty array for applications.
-        $applications=array();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $productName = $_POST['productName'];
+    $productDescription = $_POST['productDescription'];
+
+    $applications = [];
+
+    if (!empty($_POST['applicationName']) && !empty($_POST['applicationDescription'])) {
+        $applications[$_POST['applicationName']] = $_POST['applicationDescription'];
     }
-    
-    $result = createInJSON(APP_PATH.'/data/data.JSON',$applications);
-
-    if($result==true)
-    {
-        header('location: index.php');
+    if (!empty($_POST['applicationName1']) && !empty($_POST['applicationDescription1'])) {
+        $applications[$_POST['applicationName1']] = $_POST['applicationDescription1'];
     }
-}else{
+
+    $product = new Product($productName, $productDescription, $applications);
+
+
+    $jsonCrud->create($product->toArray());
+
+
+    header('Location: index.php');
+    exit;
+}
 ?>
 <a href="index.php">Product Index</a>
 <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
@@ -64,5 +62,3 @@ if(count($_POST)>0){
 	    <button type="submit" a href="index.php">Create</button>
     </div>
 </form>
-<?php 
-}
