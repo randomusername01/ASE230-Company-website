@@ -1,5 +1,5 @@
 <?php
-
+// CSVhelper.php - Abstract class that holds useful functions for interacting with a CSV file.
 abstract class CSVhelper{
 	public $property;
 	
