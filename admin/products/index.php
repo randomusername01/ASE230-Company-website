@@ -1,22 +1,23 @@
 <?php
-    // INDEX.php Shows all the existing products in a list.
-require 'products.php';
+require '../../lib/JsonCRUD.php';
 require_once('../../settings.php');
 
-$products=readJSONFile(APP_PATH.'/data/data.JSON');
+$jsonCrud = new JsonCRUD(APP_PATH.'/data/data.json');
+$products = $jsonCrud->read();
 
-$index=0;
 echo '<a href="create.php">Create a New Product</a>';
-foreach($products as $productname => $details){
-    ?>
+foreach ($products as $index => $details) {
+
+    if (isset($details['Name'])) {
+        ?>
         <div>
-            <h1><?= $details['Name'] ?></h1>
-            <a href="detail.php?index=<?= $index ?>">View Details</a> | 
-            <a href="edit.php?index=<?= $index ?>">Edit</a> | 
+            <h1><?= htmlspecialchars($details['Name']) ?></h1>
+            <a href="detail.php?index=<?= $index ?>">View Details</a> |
+            <a href="edit.php?index=<?= $index ?>">Edit</a> |
             <a href="delete.php?index=<?= $index ?>">Delete</a>
         </div>
         <hr />
-    <?php
-    $index++;
+        <?php
+    }
 }
-
+?>

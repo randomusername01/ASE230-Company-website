@@ -1,32 +1,33 @@
 <?php
-// DETAIL.php: show one of the products in detail.
-require 'products.php';
+require '../../lib/JsonCRUD.php';
+require 'Product.php';
 require_once('../../settings.php');
 
-$products=readJSONFile(APP_PATH.'/data/data.json');
+$jsonCrud = new JsonCRUD(APP_PATH.'/data/data.json');
+$productId = $_GET['index'] ?? null;
 
-$index=$_GET['index'];
-$product = getProduct($products,$index);
+$productData = $jsonCrud->readByIndex($productId);
+$product = Product::fromArray($productData);
 
-// seperating the applications into their own array.
-$applications=$product['Applications'];
-$appKeys = array_keys($applications);
 
-print_r(count($applications));
-
-$i=0;
 ?>
-<div>
-    <a href="index.php">Product Index</a> | <a href="edit.php?index=<?= $index ?>">Edit Product</a>
-    <h2><?= $product['Name'] ?></h2>
-    <p><?= $product['Description'] ?></p>
-    <h3>Applications</h3>
-    <?php 
-        while($i < count($applications)){
-            echo '<p>'.$appKeys[$i].': '.$applications[$appKeys[$i]].'</p>';
-            $i++;
-        }
-    ?>
-           
-</div>
-<?php 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details</title>
+</head>
+<body>
+<h1>Product Details</h1>
+<?php if($product): ?>
+    <p><strong>Name:</strong> <?php echo htmlspecialchars($product->name); ?></p>
+    <p><strong>Description:</strong> <?php echo htmlspecialchars($product->description); ?></p>
+    <p><strong>Applications:</strong> <?php echo htmlspecialchars(implode(', ', $product->applications)); ?></p>
+    <a href="edit.php?id=<?php echo htmlspecialchars($productId); ?>">Edit</a>
+    <a href="delete.php?id=<?php echo htmlspecialchars($productId); ?>">Delete</a>
+<?php else: ?>
+    <p>Product not found.</p>
+<?php endif; ?>
+<a href="index.php">Back to List</a>
+</body>
+</html>
