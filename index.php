@@ -1,8 +1,7 @@
 <?php
 
-require './admin/awards/achievements.php';
-require './admin/awards/award.php';
-require './admin/awards/csvhelper.php';
+require_once './admin/awards/csvhelper.php';
+require_once './admin/awards/achievements.php';
 
 require './lib/readCSV.php';
 require 'lib\readJSON.php';
@@ -239,14 +238,19 @@ $file = 'data\KeyProducts_Services.JSON';
                 <div class="row justify-content-center mb-4">
                     <div class="col-lg-7 text-center">
                         <h2 class="fw-bold">Our Achievements</h2>
-                        <p class="text-muted">While we have many successes to be proud of, here are some of our top picks:</p>
+                        <p class="text-muted">Here are some of our proudest achievements.</p>
                     </div>
                 </div>
                 <div class="row">
 					<?php
+                    $file='./data/awards.csv';
                     // TODO: initiate Achievements.
-                        Achievements::init(APP_PATH);
-                        Achievements::index(APP_PATH.'/data/awards.csv');
+                    $achievements = new Achievements();
+                    
+                    $achievements->index();
+                   //  $achievements->display();
+                   // print_r($achievements);
+                
 					?>
                 </div>
                 <!-- end row -->

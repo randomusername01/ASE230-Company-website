@@ -1,15 +1,24 @@
 <?php
+require_once 'settings.php';
+
 // CSVhelper.php - Abstract class that holds useful functions for interacting with a CSV file.
-abstract class CSVhelper{
-	public $property;
+class CSVhelper{
 	
     // index the csv file.
 	public function index($file){
-		$lines=[];
-		$fs=fopen($file,'r');
-		while(!feof($fs)) $lines[]=explode(';',fgets($fs));
-		fclose($fs);
-		return $line;
+        // does file exist?
+        if(!file_exists($file) || !is_readable($file)) return false;
+	    // Everything else below is modified from 09-csv-read.php
+        // create array to return
+        $outerArray=array();
+        // open file with fOpen & get path
+        $fp=fopen($file,'r');
+        while($content=fgetcsv($fp)){
+            array_push($outerArray,$content);
+        }
+        return $outerArray;
+        // close the file.
+        fclose($fp);
 	}
 	
 	 // reads CSV file and turns it into an array.
