@@ -1,5 +1,8 @@
 <?php
 
+require_once './admin/awards/csvhelper.php';
+require_once './admin/awards/achievements.php';
+
 require './lib/readCSV.php';
 require 'lib\readJSON.php';
 require_once 'lib\readPlainText.php';
@@ -235,35 +238,19 @@ $file = 'data\KeyProducts_Services.JSON';
                 <div class="row justify-content-center mb-4">
                     <div class="col-lg-7 text-center">
                         <h2 class="fw-bold">Our Achievements</h2>
-                        <p class="text-muted">While we have many successes to be proud of, here are some of our top picks.</p>
+                        <p class="text-muted">Here are some of our proudest achievements.</p>
                     </div>
                 </div>
                 <div class="row">
 					<?php
-					$file='./data/awards.csv';
-						$ourAwards=readCSVFile($file);
-						foreach ($ourAwards as $i=>$award):
-							if($award[0]=='Year')
-							{
-								// skip
-							}
-							else{
-							echo '<div class="col-lg-4">
-								<div class="card mt-4 border-0 shadow">
-									<div class="card-body p-4">
-										<span class="badge badge-soft-primary">Achievements</span>
-										<h4 class="font-size-22 my-4"><a href="javascript: void(0);">'.$award[0].'</a></h4>
-										<p class="text-muted">'.$award[1].'</p>
-										<div class="d-flex align-items-center mt-4 pt-2">
-											<div class="flex-body">
-												<h5 class="font-size-17 mb-0"></h5>
-											</div>
-										</div>
-									</div><!-- end cardbody -->
-								</div><!-- end card -->
-							</div><!-- end col -->';
-							};
-						endforeach; 
+                    $file='./data/awards.csv';
+                    // TODO: initiate Achievements.
+                    $achievements = new Achievements();
+                    
+                    $achievements->index();
+                    $achievements->display();
+                   // print_r($achievements);
+                
 					?>
                 </div>
                 <!-- end row -->
