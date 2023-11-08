@@ -248,7 +248,7 @@ $file = 'data\KeyProducts_Services.JSON';
                     $achievements = new Achievements();
                     
                     $achievements->index();
-                   //  $achievements->display();
+                    $achievements->display();
                    // print_r($achievements);
                 
 					?>

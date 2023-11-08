@@ -1,8 +1,8 @@
 <?php
 
 class Award{
-    private $year;
-    private $achievement;
+    public $year;
+    public $achievement;
     
     public function __construct($year,$achievement){
         $this->year=$year;
@@ -11,6 +11,7 @@ class Award{
 
     public function display(){
         // display the award
+       
         echo '<div class="col-lg-4">
                             <div class="card mt-4 border-0 shadow">
                                     <div class="card-body p-4">
@@ -25,5 +26,12 @@ class Award{
                                     </div><!-- end cardbody -->
                                 </div><!-- end card -->
                             </div><!-- end col -->';
+                            
+    }
+
+    public function __debugInfo() {
+        return [
+            // nothing
+        ];
     }
 }
